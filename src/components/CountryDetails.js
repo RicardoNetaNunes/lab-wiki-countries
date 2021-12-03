@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 import  'bootstrap/dist/css/bootstrap.css';
 
 function CountryDetails() {
@@ -47,7 +48,18 @@ function CountryDetails() {
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Capital:     {detail.capital}</li>
           <li class="list-group-item">Area: {detail.area} km²</li>
-          <li class="list-group-item">Borders: {detail.borders}</li>
+
+
+          <ul class="list-group list-group-flush">
+            Borders:
+            {detail.borders[0].map((elem) => {
+            return (
+              <li class="list-group-item">
+              <Link to={`/countries/${elem}`}> {elem}<br /></Link>
+              </li> 
+            );
+          })}
+        </ul>
         </ul>
         <hr/>
       </div>
